@@ -600,17 +600,52 @@ function init() {
   });
 }
 
+function jsonpRequest(params = {}) {
+  return new Promise((resolve, reject) => {
+    if (!isConfigured()) return reject(new Error('URL do Apps Script não configurada.'));
+
+    const callbackName = `sq4_cb_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    const script = document.createElement('script');
+    const timeout = setTimeout(() => {
+      cleanup();
+      reject(new Error('Tempo esgotado ao conectar com o Apps Script.'));
+    }, 20000);
+
+    function cleanup() {
+      clearTimeout(timeout);
+      delete window[callbackName];
+      if (script.parentNode) script.parentNode.removeChild(script);
+    }
+
+    window[callbackName] = data => {
+      cleanup();
+      resolve(data);
+    };
+
+    const url = new URL(APPS_SCRIPT_URL);
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) url.searchParams.set(key, value);
+    });
+    url.searchParams.set('callback', callbackName);
+    url.searchParams.set('v', Date.now());
+
+    script.onerror = () => {
+      cleanup();
+      reject(new Error('Não foi possível carregar a resposta do Apps Script. Verifique se a implantação está pública.'));
+    };
+    script.src = url.toString();
+    document.body.appendChild(script);
+  });
+}
+
 async function apiGet() {
-  const res = await fetch(`${APPS_SCRIPT_URL}?action=list&v=${Date.now()}`);
-  return await res.json();
+  return await jsonpRequest({ action: 'list' });
 }
 async function apiPost(payload) {
-  const res = await fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify(payload)
+  return await jsonpRequest({
+    action: payload.action,
+    payload: JSON.stringify(payload)
   });
-  return await res.json();
 }
 
 async function refreshEvents() {
