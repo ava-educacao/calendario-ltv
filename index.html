@@ -8,26 +8,27 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #f4f7fb;
-  --surface: #ffffff;
-  --surface-2: #f8fafc;
-  --ink: #101828;
-  --muted: #667085;
-  --muted-2: #98a2b3;
-  --line: #e4e7ec;
-  --line-2: #d0d5dd;
-  --primary: #12695f;
-  --primary-2: #0f766e;
-  --primary-soft: #e6f7f4;
-  --danger: #d92d20;
-  --danger-soft: #fee4e2;
-  --warning: #f79009;
-  --warning-soft: #fff1d6;
-  --success: #039855;
-  --success-soft: #dcfae6;
-  --shadow: 0 18px 55px rgba(16, 24, 40, .08);
-  --shadow-soft: 0 10px 24px rgba(16, 24, 40, .06);
+ :root {
+  --bg: #070b12;
+  --surface: #101827;
+  --surface-2: #162033;
+  --surface-3: #1d2a40;
+  --ink: #f8fafc;
+  --muted: #a7b3c7;
+  --muted-2: #718096;
+  --line: rgba(148, 163, 184, .20);
+  --line-2: rgba(148, 163, 184, .34);
+  --primary: #22c55e;
+  --primary-2: #2dd4bf;
+  --primary-soft: rgba(45, 212, 191, .14);
+  --danger: #fb7185;
+  --danger-soft: rgba(251, 113, 133, .13);
+  --warning: #fbbf24;
+  --warning-soft: rgba(251, 191, 36, .15);
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, .14);
+  --shadow: 0 24px 70px rgba(0, 0, 0, .45);
+  --shadow-soft: 0 16px 38px rgba(0, 0, 0, .28);
   --radius: 18px;
   --radius-sm: 12px;
 }
@@ -38,8 +39,9 @@ body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(18,105,95,.16), transparent 34rem),
-    linear-gradient(180deg, #f8fbff 0%, var(--bg) 46%, #eef3f8 100%);
+    radial-gradient(circle at top left, rgba(45, 212, 191, .18), transparent 32rem),
+    radial-gradient(circle at top right, rgba(34, 197, 94, .10), transparent 28rem),
+    linear-gradient(180deg, #05070d 0%, var(--bg) 45%, #0b1120 100%);
   color: var(--ink);
   min-height: 100vh;
 }
@@ -48,7 +50,7 @@ button { cursor: pointer; }
 
 .app-shell { max-width: 1480px; margin: 0 auto; padding: 24px; }
 .hero {
-  background: linear-gradient(135deg, #0b3b36 0%, #116c62 58%, #209a83 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #134e4a 58%, #0f766e 100%);
   color: #fff;
   border-radius: 28px;
   padding: 24px;
@@ -86,12 +88,12 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
   white-space: nowrap;
 }
 .btn:active { transform: scale(.98); }
-.btn-primary { background: #fff; color: #0b3b36; box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+.btn-primary { background: #f8fafc; color: #0b3b36; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
 .btn-primary:hover { box-shadow: 0 12px 28px rgba(0,0,0,.16); transform: translateY(-1px); }
 .btn-secondary { background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.22); }
 .btn-secondary:hover { background: rgba(255,255,255,.2); }
 .btn-ghost { background: var(--surface-2); color: var(--ink); border: 1px solid var(--line); }
-.btn-ghost:hover { background: #fff; box-shadow: var(--shadow-soft); }
+.btn-ghost:hover { background: var(--surface-3); box-shadow: var(--shadow-soft); }
 .btn-danger { background: var(--danger-soft); color: var(--danger); }
 .btn-danger:hover { background: #ffd2cf; }
 .btn-dark { background: var(--primary); color: #fff; }
@@ -125,9 +127,9 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
   margin: 22px 0;
 }
 .filters {
-  background: rgba(255,255,255,.72);
+  background: rgba(16, 24, 39, .84);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(228,231,236,.9);
+  border: 1px solid var(--line);
   box-shadow: var(--shadow-soft);
   border-radius: 24px;
   padding: 12px;
@@ -138,7 +140,7 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
 .input, .select {
   width: 100%;
   border: 1px solid var(--line);
-  background: #fff;
+  background: rgba(15, 23, 42, .92);
   border-radius: 999px;
   padding: 11px 14px;
   color: var(--ink);
@@ -150,7 +152,7 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #fff;
+  background: rgba(16, 24, 39, .86);
   border: 1px solid var(--line);
   padding: 8px;
   border-radius: 999px;
@@ -161,9 +163,9 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
 
 .stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
 .stat-card {
-  background: rgba(255,255,255,.78);
+  background: rgba(16, 24, 39, .84);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(228,231,236,.9);
+  border: 1px solid var(--line);
   border-radius: 22px;
   padding: 16px;
   box-shadow: var(--shadow-soft);
@@ -172,25 +174,32 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
 .stat-value { margin-top: 8px; font-size: 28px; font-weight: 900; letter-spacing: -1px; }
 .stat-help { color: var(--muted-2); font-size: 12px; margin-top: 4px; }
 
-.content-grid { display: grid; grid-template-columns: 1fr 360px; gap: 18px; align-items: start; }
+.content-grid { display: grid; grid-template-columns: 1fr; gap: 18px; align-items: start; }
 .panel {
-  background: rgba(255,255,255,.82);
+  background: rgba(16, 24, 39, .88);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(228,231,236,.92);
+  border: 1px solid var(--line);
   border-radius: 26px;
   box-shadow: var(--shadow-soft);
   overflow: hidden;
 }
+
+.panel, .stat-card, .filters, .year-control { backdrop-filter: blur(14px); }
+.calendar-table th { color: #b6c2d6; }
+.cell-empty { background: rgba(255,255,255,.015); }
+.input::placeholder { color: #7f8ba3; }
+.select option { background: #0f172a; color: #f8fafc; }
+
 .panel-head { padding: 18px 18px 14px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 14px; }
 .panel-title { margin: 0; font-size: 17px; letter-spacing: -.3px; }
 .panel-sub { margin-top: 4px; color: var(--muted); font-size: 13px; }
 .calendar-scroll { overflow: auto; padding: 14px; }
-.calendar-table { width: 100%; min-width: 1020px; border-spacing: 8px; table-layout: fixed; }
+.calendar-table { width: 100%; min-width: 1180px; border-spacing: 8px; table-layout: fixed; }
 .calendar-table th { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; padding: 8px 6px; }
 .week-head { width: 74px; text-transform: none !important; letter-spacing: 0 !important; color: var(--muted-2) !important; font-family: "JetBrains Mono", monospace; }
 .cal-cell {
-  height: 118px;
-  background: #fff;
+  height: 126px;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 18px;
   vertical-align: top;
@@ -239,10 +248,10 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
 }
 .more-btn:hover { background: var(--primary-soft); color: var(--primary); border-color: rgba(15,118,110,.25); }
 
-.side-list { padding: 14px; display: grid; gap: 10px; }
+.side-list { padding: 14px; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .upcoming-card {
   border: 1px solid var(--line);
-  background: #fff;
+  background: rgba(15, 23, 42, .90);
   border-radius: 18px;
   padding: 12px;
   display: grid;
@@ -259,7 +268,7 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
 .legend-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
 .legend-chip {
   border: 1px solid var(--line);
-  background: #fff;
+  background: rgba(15, 23, 42, .92);
   border-radius: 999px;
   padding: 7px 10px;
   display: inline-flex;
@@ -285,7 +294,7 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
 }
 .overlay.open { display: flex; }
 .modal {
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 28px;
   box-shadow: 0 28px 80px rgba(16,24,40,.28);
@@ -308,7 +317,7 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
   border-radius: 16px;
   padding: 13px 14px;
   outline: 0;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
 }
 .field input:focus, .field select:focus { border-color: var(--primary-2); box-shadow: 0 0 0 4px rgba(15,118,110,.12); }
@@ -375,7 +384,7 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
       <span class="sync-dot" id="sync-dot"></span>
       <div>
         <div class="sync-title" id="sync-title">Aguardando configuração</div>
-        <div class="sync-text" id="sync-text">Cole a URL do Web App do Google Apps Script na variável APPS_SCRIPT_URL para sincronizar com a planilha.</div>
+        <div class="sync-text" id="sync-text">Sincronização conectada à planilha do Google. As ações criadas aqui serão salvas para todos.</div>
       </div>
     </div>
   </section>
@@ -426,7 +435,7 @@ h1 { margin: 10px 0 6px; font-size: clamp(28px, 4vw, 46px); line-height: 1; lett
       <div class="panel-head">
         <div>
           <h2 class="panel-title">Próximas ações</h2>
-          <div class="panel-sub">Eventos pendentes mais próximos.</div>
+          <div class="panel-sub">Eventos pendentes mais próximos. Esta seção fica abaixo para liberar mais espaço para a visão anual.</div>
         </div>
       </div>
       <div class="side-list" id="upcoming-list"></div>
